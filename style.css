@@ -1,0 +1,1799 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+
+/* ==========================================
+   VARIABLES
+========================================== */
+
+:root {
+    --bg: #05070d;
+    --panel: #0a0e18;
+    --panel-light: #0f1522;
+    --border: #1c2638;
+
+    --text: #e8edf7;
+    --muted: #758198;
+
+    --accent: #7aa7ff;
+    --accent-soft: rgba(122, 167, 255, 0.12);
+
+    --green: #70e0a0;
+    --yellow: #ffd56a;
+
+    --radius: 16px;
+}
+
+
+/* ==========================================
+   RESET
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(75, 105, 180, 0.12),
+            transparent 40%
+        ),
+        var(--bg);
+
+    color: var(--text);
+
+    font-family: "Inter", sans-serif;
+
+    min-height: 100vh;
+
+    padding: 20px;
+
+    overflow-x: hidden;
+}
+
+
+/* ==========================================
+   BACKGROUND STARS
+========================================== */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.25;
+
+    background-image:
+        radial-gradient(circle, white 1px, transparent 1px),
+        radial-gradient(circle, white 1px, transparent 1px);
+
+    background-size:
+        97px 97px,
+        151px 151px;
+
+    background-position:
+        20px 30px,
+        70px 100px;
+
+    z-index: -1;
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.header {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0 auto 30px;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px solid var(--border);
+
+    padding-bottom: 18px;
+}
+
+
+.brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.brand-symbol {
+    color: var(--accent);
+
+    font-size: 25px;
+
+    text-shadow:
+        0 0 12px rgba(122, 167, 255, 0.8);
+}
+
+
+.brand-name {
+    font-family: "Space Mono", monospace;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    letter-spacing: 5px;
+}
+
+
+.datetime {
+    text-align: right;
+
+    font-family: "Space Mono", monospace;
+}
+
+
+#time {
+    font-size: 24px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+
+#date {
+    margin-top: 3px;
+
+    font-size: 10px;
+
+    color: var(--muted);
+
+    letter-spacing: 2px;
+}
+
+
+/* ==========================================
+   MAIN
+========================================== */
+
+main {
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    gap: 18px;
+}
+
+
+section {
+    background: rgba(10, 14, 24, 0.82);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    padding: 20px;
+
+    backdrop-filter: blur(8px);
+}
+
+
+/* ==========================================
+   SECTION TITLE
+========================================== */
+
+.section-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 18px;
+}
+
+
+.section-title span {
+    font-size: 18px;
+}
+
+
+.section-title h2 {
+    font-family: "Space Mono", monospace;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    color: var(--muted);
+}
+
+
+/* ==========================================
+   SKY STATUS
+========================================== */
+
+.sky-status-content {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 30px;
+}
+
+
+.sky-condition {
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+}
+
+
+.condition-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--accent-soft);
+
+    color: var(--accent);
+
+    font-size: 27px;
+
+    box-shadow:
+        0 0 25px rgba(122, 167, 255, 0.15);
+}
+
+
+.label {
+    display: block;
+
+    font-family: "Space Mono", monospace;
+
+    color: var(--muted);
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 5px;
+}
+
+
+.sky-condition strong {
+    font-size: 19px;
+
+    letter-spacing: 1px;
+}
+
+
+/* ==========================================
+   VISIBILITY
+========================================== */
+
+.visibility-value {
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 3px;
+
+    margin-bottom: 8px;
+}
+
+
+.visibility-value strong {
+    font-size: 27px;
+}
+
+
+.visibility-value span {
+    color: var(--muted);
+}
+
+
+.visibility-bar {
+    height: 5px;
+
+    background: #161d2b;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+.visibility-progress {
+    height: 100%;
+
+    width: 82%;
+
+    background: var(--accent);
+
+    box-shadow:
+        0 0 12px rgba(122, 167, 255, 0.7);
+}
+
+
+/* ==========================================
+   WEATHER
+========================================== */
+
+.weather-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+}
+
+
+.weather-card {
+    background: var(--panel-light);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 16px;
+}
+
+
+.weather-icon {
+    display: block;
+
+    font-size: 20px;
+
+    margin-bottom: 14px;
+}
+
+
+.weather-card strong {
+    font-size: 18px;
+}
+
+
+/* ==========================================
+   CELESTIAL OBJECTS
+========================================== */
+
+.object-list {
+    display: grid;
+
+    gap: 10px;
+}
+
+
+.celestial-object {
+    display: grid;
+
+    grid-template-columns:
+        50px 1fr auto;
+
+    align-items: center;
+
+    gap: 15px;
+
+    background: var(--panel-light);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 14px;
+
+    transition:
+        border-color 0.2s,
+        transform 0.2s;
+}
+
+
+.celestial-object:hover {
+    border-color: #354665;
+
+    transform: translateY(-2px);
+}
+
+
+.object-icon {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: var(--accent-soft);
+
+    font-size: 22px;
+}
+
+
+.object-type {
+    font-family: "Space Mono", monospace;
+
+    color: var(--accent);
+
+    font-size: 8px;
+
+    letter-spacing: 1.5px;
+}
+
+
+.object-info h3 {
+    margin-top: 3px;
+
+    font-size: 16px;
+}
+
+
+.object-info p {
+    color: var(--muted);
+
+    font-size: 11px;
+
+    margin-top: 3px;
+}
+
+
+.object-position {
+    display: grid;
+
+    grid-template-columns:
+        auto auto;
+
+    column-gap: 8px;
+
+    row-gap: 2px;
+
+    text-align: right;
+
+    font-family: "Space Mono", monospace;
+}
+
+
+.object-position span {
+    color: var(--muted);
+
+    font-size: 7px;
+}
+
+
+.object-position strong {
+    font-size: 11px;
+}
+
+
+/* ==========================================
+   NEXT EVENT
+========================================== */
+
+.event-card {
+    display: grid;
+
+    grid-template-columns:
+        70px 1fr auto;
+
+    align-items: center;
+
+    gap: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(122, 167, 255, 0.09),
+            rgba(10, 14, 24, 0.5)
+        );
+
+    border: 1px solid #253453;
+
+    border-radius: 14px;
+
+    padding: 18px;
+}
+
+
+.event-date {
+    text-align: center;
+
+    border-right: 1px solid var(--border);
+
+    padding-right: 18px;
+}
+
+
+.event-date span {
+    display: block;
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 28px;
+
+    font-weight: 700;
+}
+
+
+.event-date small {
+    color: var(--accent);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+.event-type {
+    font-family: "Space Mono", monospace;
+
+    color: var(--accent);
+
+    font-size: 8px;
+
+    letter-spacing: 1.5px;
+}
+
+
+.event-info h3 {
+    font-size: 18px;
+
+    margin: 3px 0;
+}
+
+
+.event-info p {
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+
+.event-arrow {
+    font-size: 25px;
+
+    color: var(--muted);
+}
+
+
+/* ==========================================
+   UPCOMING EVENTS
+========================================== */
+
+.event-list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+}
+
+
+.small-event {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    background: var(--panel-light);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 13px;
+}
+
+
+.small-event-date {
+    text-align: center;
+
+    min-width: 38px;
+}
+
+
+.small-event-date strong {
+    display: block;
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 19px;
+}
+
+
+.small-event-date span {
+    color: var(--accent);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 7px;
+
+    letter-spacing: 1px;
+}
+
+
+.small-event > div:last-child span {
+    display: block;
+
+    color: var(--muted);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 7px;
+
+    margin-bottom: 4px;
+}
+
+
+.small-event > div:last-child strong {
+    font-size: 12px;
+}
+
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+footer {
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: 25px auto 0;
+
+    padding: 15px 5px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: var(--muted);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+
+/* ==========================================
+   RESPONSIVE — TABLET
+========================================== */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 12px;
+    }
+
+    .header {
+        margin-bottom: 18px;
+    }
+
+    .brand-name {
+        font-size: 18px;
+
+        letter-spacing: 3px;
+    }
+
+    #time {
+        font-size: 20px;
+    }
+
+    .sky-status-content {
+        grid-template-columns: 1fr;
+    }
+
+    .weather-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .event-list {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* ==========================================
+   RESPONSIVE — PHONE
+========================================== */
+
+@media (max-width: 480px) {
+
+    body {
+        padding: 8px;
+    }
+
+    section {
+        padding: 15px;
+    }
+
+    .header {
+        padding-bottom: 13px;
+    }
+
+    .brand-symbol {
+        font-size: 20px;
+    }
+
+    .brand-name {
+        font-size: 15px;
+
+        letter-spacing: 2px;
+    }
+
+    #time {
+        font-size: 17px;
+    }
+
+    #date {
+        font-size: 7px;
+
+        letter-spacing: 1px;
+    }
+
+    .section-title {
+        margin-bottom: 13px;
+    }
+
+    .section-title h2 {
+        font-size: 10px;
+    }
+
+    .weather-card {
+        padding: 12px;
+    }
+
+    .weather-icon {
+        margin-bottom: 9px;
+    }
+
+    .weather-card strong {
+        font-size: 15px;
+    }
+
+    .celestial-object {
+        grid-template-columns:
+            40px 1fr auto;
+
+        gap: 9px;
+
+        padding: 10px;
+    }
+
+    .object-icon {
+        width: 38px;
+        height: 38px;
+
+        font-size: 18px;
+    }
+
+    .object-info h3 {
+        font-size: 14px;
+    }
+
+    .object-info p {
+        font-size: 9px;
+    }
+
+    .event-card {
+        grid-template-columns:
+            55px 1fr;
+
+        gap: 12px;
+    }
+
+    .event-arrow {
+        display: none;
+    }
+
+    .event-date {
+        padding-right: 12px;
+    }
+
+    .event-date span {
+        font-size: 23px;
+    }
+
+    footer {
+        font-size: 6px;
+    }
+
+    .location {
+        display: none;
+    }
+
+}
+
+/* ==========================================
+   LOCATION
+========================================== */
+
+.location {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 3px;
+
+    font-family: "Space Mono", monospace;
+}
+
+.location-status {
+    color: var(--green);
+
+    font-size: 8px;
+
+    letter-spacing: 1.5px;
+}
+
+.location-status::first-letter {
+    text-shadow: 0 0 8px var(--green);
+}
+
+#location-name {
+    color: var(--muted);
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+}
+
+/* ==========================================
+   WEATHER LOCATION
+========================================== */
+
+.weather-location {
+    margin-bottom: 18px;
+
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.weather-location strong {
+    font-size: 18px;
+}
+
+
+/* ==========================================
+   WEATHER MAIN
+========================================== */
+
+.weather-main {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 18px;
+
+    padding: 18px;
+
+    background: var(--panel-light);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+}
+
+
+.weather-main-icon {
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--accent-soft);
+
+    font-size: 32px;
+}
+
+
+.weather-main-info strong {
+    display: block;
+
+    font-size: 20px;
+
+    margin-bottom: 4px;
+}
+
+
+.weather-main-info span:last-child {
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+
+/* ==========================================
+   SKY QUALITY STATES
+========================================== */
+
+.sky-good {
+    color: var(--green) !important;
+}
+
+.sky-medium {
+    color: var(--yellow) !important;
+}
+
+.sky-poor {
+    color: #ff7d7d !important;
+}
+
+
+/* ==========================================
+   MOBILE WEATHER
+========================================== */
+
+@media (max-width: 480px) {
+
+    .weather-main {
+        padding: 13px;
+    }
+
+    .weather-main-icon {
+        width: 50px;
+        height: 50px;
+
+        font-size: 25px;
+    }
+
+    .weather-main-info strong {
+        font-size: 16px;
+    }
+
+    .weather-location strong {
+        font-size: 15px;
+    }
+
+}
+
+/* =========================================
+   ASTRONOMICAL MODULE
+   ========================================= */
+
+.astronomy-status {
+    margin-top: 10px;
+    margin-bottom: 18px;
+
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+
+    opacity: 0.6;
+}
+
+.celestial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.celestial-card {
+    position: relative;
+
+    padding: 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.025);
+
+    transition:
+        border-color 0.3s ease,
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+.celestial-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.045);
+}
+
+.celestial-card.visible {
+    border-color: rgba(100, 255, 170, 0.3);
+}
+
+.celestial-card.low {
+    border-color: rgba(255, 210, 80, 0.3);
+}
+
+.celestial-card.hidden {
+    opacity: 0.55;
+}
+
+.celestial-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.celestial-symbol {
+    font-size: 1.6rem;
+    line-height: 1;
+}
+
+.celestial-name {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.celestial-state {
+    margin-top: 18px;
+
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+}
+
+.celestial-card.visible .celestial-state {
+    color: #72ffad;
+}
+
+.celestial-card.low .celestial-state {
+    color: #ffd65c;
+}
+
+.celestial-card.hidden .celestial-state {
+    color: #ff7777;
+}
+
+.celestial-data {
+    display: flex;
+    gap: 25px;
+
+    margin-top: 18px;
+}
+
+.celestial-data div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.celestial-data span {
+    font-size: 0.55rem;
+    letter-spacing: 1px;
+    opacity: 0.45;
+}
+
+.celestial-data strong {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.celestial-card.loading {
+    opacity: 0.5;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    .celestial-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 450px) {
+
+    .celestial-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* =========================================
+   ASTRONOMICAL EVENTS
+========================================= */
+
+.events-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 30px;
+    margin-bottom: 18px;
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: var(--muted);
+}
+
+.events-line {
+    flex: 1;
+
+    height: 1px;
+
+    background: var(--border);
+}
+
+
+/* =========================================
+   NEXT CONJUNCTION
+========================================= */
+
+.next-event {
+    padding: 20px;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(122, 167, 255, 0.25);
+
+    background:
+        radial-gradient(
+            circle at 90% 50%,
+            rgba(122, 167, 255, 0.10),
+            transparent 45%
+        ),
+        rgba(122, 167, 255, 0.035);
+
+    margin-bottom: 22px;
+}
+
+
+.next-event-label {
+    font-family: "Space Mono", monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    color: var(--accent);
+
+    margin-bottom: 16px;
+}
+
+
+.next-event-main {
+    display: grid;
+
+    grid-template-columns:
+        55px 1fr auto;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.next-event-symbol {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--accent-soft);
+
+    color: var(--accent);
+
+    font-size: 25px;
+
+    box-shadow:
+        0 0 25px
+        rgba(122, 167, 255, 0.12);
+}
+
+
+.next-event-planets {
+    font-family: "Space Mono", monospace;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+.next-event-date {
+    margin-top: 5px;
+
+    color: var(--muted);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+}
+
+
+.next-event-separation {
+    text-align: right;
+
+    padding-left: 20px;
+
+    border-left: 1px solid var(--border);
+}
+
+
+.next-event-separation span {
+    display: block;
+
+    color: var(--muted);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 7px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 5px;
+}
+
+
+.next-event-separation strong {
+    color: var(--accent);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 17px;
+}
+
+
+/* =========================================
+   EVENT SUBTITLE
+========================================= */
+
+.events-subtitle {
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 1.5px;
+
+    color: var(--muted);
+}
+
+
+/* =========================================
+   CONJUNCTION GRID
+========================================= */
+
+.event-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+}
+
+
+.event-item {
+    padding: 15px;
+
+    background: var(--panel-light);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.event-item:hover {
+    transform: translateY(-2px);
+
+    border-color:
+        rgba(122, 167, 255, 0.35);
+
+    background:
+        rgba(255, 255, 255, 0.035);
+}
+
+
+.event-item-planets {
+    font-family: "Space Mono", monospace;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+.event-item-date {
+    margin-top: 7px;
+
+    color: var(--muted);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 0.8px;
+}
+
+
+.event-item-bottom {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: end;
+
+    margin-top: 14px;
+
+    padding-top: 10px;
+
+    border-top: 1px solid var(--border);
+}
+
+
+.event-item-bottom span {
+    color: var(--muted);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 7px;
+
+    letter-spacing: 1px;
+}
+
+
+.event-item-bottom strong {
+    color: var(--accent);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 11px;
+}
+
+
+/* =========================================
+   CLOSEST APPROACHES
+========================================= */
+
+.approach-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 10px;
+}
+
+
+.approach-item {
+    padding: 15px;
+
+    background: var(--panel-light);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+}
+
+
+.approach-planet {
+    font-family: "Space Mono", monospace;
+
+    color: var(--accent);
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+}
+
+
+.approach-date {
+    margin-top: 8px;
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 8px;
+
+    color: var(--muted);
+}
+
+
+.approach-distance {
+    margin-top: 13px;
+}
+
+
+.approach-distance strong {
+    display: block;
+
+    font-size: 16px;
+}
+
+
+.approach-distance span {
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--muted);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 7px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   EVENTS LOADING
+========================================= */
+
+.events-loading {
+    grid-column: 1 / -1;
+
+    padding: 20px;
+
+    text-align: center;
+
+    color: var(--muted);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* =========================================
+   EVENTS MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .event-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .approach-grid {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .approach-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .next-event-main {
+        grid-template-columns:
+            45px 1fr;
+    }
+
+    .next-event-symbol {
+        width: 42px;
+        height: 42px;
+
+        font-size: 20px;
+    }
+
+    .next-event-planets {
+        font-size: 14px;
+    }
+
+    .next-event-separation {
+        grid-column: 1 / -1;
+
+        border-left: none;
+
+        border-top: 1px solid var(--border);
+
+        padding-left: 0;
+        padding-top: 12px;
+
+        text-align: left;
+    }
+
+    .event-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .approach-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+/* =========================================
+   LIVE SKY VIEW
+========================================= */
+
+.sky-view {
+    overflow: hidden;
+}
+
+
+/* HEADER */
+
+.sky-view-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+.sky-view-header strong {
+    display: block;
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+}
+
+
+.sky-view-status {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 1.5px;
+
+    color: var(--green);
+}
+
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    box-shadow:
+        0 0 10px var(--green);
+}
+
+
+/* MAP */
+
+.sky-map-wrapper {
+    position: relative;
+
+    width: min(100%, 650px);
+
+    aspect-ratio: 1 / 1;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+#sky-map {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    cursor: crosshair;
+}
+
+
+/* CARDINAL DIRECTIONS */
+
+.sky-direction {
+    position: absolute;
+
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 9px;
+
+    color: var(--muted);
+
+    pointer-events: none;
+}
+
+
+.sky-direction.north {
+    top: 3%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: var(--text);
+}
+
+
+.sky-direction.east {
+    right: 3%;
+    top: 50%;
+
+    transform: translateY(-50%);
+}
+
+
+.sky-direction.south {
+    bottom: 3%;
+    left: 50%;
+
+    transform: translateX(-50%);
+}
+
+
+.sky-direction.west {
+    left: 3%;
+    top: 50%;
+
+    transform: translateY(-50%);
+}
+
+
+/* ZENITH */
+
+.sky-zenith {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 7px;
+
+    letter-spacing: 1px;
+
+    color: var(--muted);
+
+    opacity: 0.45;
+
+    pointer-events: none;
+}
+
+
+/* OBJECT INFO */
+
+.sky-view-info {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr 1fr;
+
+    gap: 10px;
+
+    margin-top: 18px;
+}
+
+
+.sky-view-info > div {
+    padding: 13px;
+
+    background: var(--panel-light);
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+}
+
+
+.sky-view-info strong {
+    font-family: "Space Mono", monospace;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   SKY VIEW MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+    .sky-view-header strong {
+        font-size: 10px;
+    }
+
+    .sky-view-info {
+        grid-template-columns: 1fr;
+    }
+
+}

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Responsive per smartphone -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ORBIT — Space & Weather Station</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ==========================================
+         HEADER
+    =========================================== -->
+
+    <header class="header">
+
+        <div class="brand">
+            <span class="brand-symbol">◉</span>
+            <span class="brand-name">ORBIT</span>
+        </div>
+
+        <div class="location">
+            <span class="location-status">● LOCATION</span>
+            <span id="location-name">Detecting...</span>
+        </div>
+
+        <div class="datetime">
+            <div id="time">18:47</div>
+            <div id="date">04 OCTOBER 2026</div>
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         MAIN
+    =========================================== -->
+
+    <main>
+
+
+        <!-- ======================================
+     SKY STATUS
+======================================= -->
+
+    <section class="sky-status">
+
+        <div class="section-title">
+            <span>🌌</span>
+            <h2>ASTRONOMICAL CONDITIONS</h2>
+        </div>
+
+
+        <div class="sky-status-content">
+
+
+            <!-- Qualità -->
+
+            <div class="sky-condition">
+
+                <div class="condition-icon" id="sky-icon">
+                    ✦
+                </div>
+
+                <div>
+
+                    <span class="label">
+                        OBSERVATION
+                    </span>
+
+                    <strong id="sky-quality">
+                        ANALYZING
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Visibilità -->
+
+            <div class="visibility">
+
+                <span class="label">
+                    SKY VISIBILITY
+                </span>
+
+                <div class="visibility-value">
+
+                    <strong id="sky-visibility">
+                        --
+                    </strong>
+
+                    <span>%</span>
+
+                </div>
+
+
+                <div class="visibility-bar">
+
+                    <div
+                        class="visibility-progress"
+                        id="sky-progress">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+        <!-- ======================================
+     WEATHER
+        ======================================= -->
+
+    <section class="weather">
+
+        <div class="section-title">
+            <span>☁</span>
+            <h2>WEATHER</h2>
+        </div>
+
+
+        <!-- Condizione principale -->
+
+        <div class="weather-main">
+
+            <div class="weather-main-icon" id="weather-icon">
+                ☀️
+            </div>
+
+            <div class="weather-main-info">
+
+                <span class="label">CURRENT CONDITIONS</span>
+
+                <strong id="weather-description">
+                    Loading...
+                </strong>
+
+                <span id="feels-like">
+                    Feels like --°C
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Dati meteo -->
+
+        <div class="weather-grid">
+
+            <div class="weather-card">
+
+                <span class="weather-icon">🌡️</span>
+
+                <span class="label">
+                    TEMPERATURE
+                </span>
+
+                <strong id="temperature">
+                    --°C
+                </strong>
+
+            </div>
+
+
+            <div class="weather-card">
+
+                <span class="weather-icon">☁️</span>
+
+                <span class="label">
+                    CLOUDS
+                </span>
+
+                <strong id="clouds">
+                    --%
+                </strong>
+
+            </div>
+
+
+            <div class="weather-card">
+
+                <span class="weather-icon">💧</span>
+
+                <span class="label">
+                    HUMIDITY
+                </span>
+
+                <strong id="humidity">
+                    --%
+                </strong>
+
+            </div>
+
+
+            <div class="weather-card">
+
+                <span class="weather-icon">💨</span>
+
+                <span class="label">
+                    WIND
+                </span>
+
+                <strong id="wind">
+                    -- km/h
+                </strong>
+
+            </div>
+
+
+            <div class="weather-card">
+
+                <span class="weather-icon">👁️</span>
+
+                <span class="label">
+                    VISIBILITY
+                </span>
+
+                <strong id="visibility">
+                    -- km
+                </strong>
+
+            </div>
+
+
+            <div class="weather-card">
+
+                <span class="weather-icon">🧭</span>
+
+                <span class="label">
+                    WIND DIRECTION
+                </span>
+
+                <strong id="wind-direction">
+                    ---
+                </strong>
+
+            </div>
+
+
+            <div class="weather-card">
+
+                <span class="weather-icon">🌅</span>
+
+                <span class="label">
+                    SUNRISE
+                </span>
+
+                <strong id="sunrise">
+                    --:--
+                </strong>
+
+            </div>
+
+
+            <div class="weather-card">
+
+                <span class="weather-icon">🌇</span>
+
+                <span class="label">
+                    SUNSET
+                </span>
+
+                <strong id="sunset">
+                    --:--
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ======================================
+     SKY VIEW
+    ======================================= -->
+
+    <section class="sky-view">
+
+        <div class="section-title">
+            <span>✦</span>
+            <h2>LIVE SKY VIEW</h2>
+        </div>
+
+        <div class="sky-view-header">
+            <div>
+                <span class="label">LOCAL HORIZON</span>
+                <strong id="sky-view-location">
+                    WAITING FOR LOCATION
+                </strong>
+            </div>
+
+            <div class="sky-view-status">
+                <span class="status-dot"></span>
+                LIVE
+            </div>
+        </div>
+
+        <div class="sky-map-wrapper">
+
+            <canvas id="sky-map"></canvas>
+
+            <div class="sky-direction north">N</div>
+            <div class="sky-direction east">E</div>
+            <div class="sky-direction south">S</div>
+            <div class="sky-direction west">W</div>
+
+            <div class="sky-zenith">
+                ZENITH
+            </div>
+
+        </div>
+
+        <div class="sky-view-info">
+
+            <div>
+                <span class="label">SELECTED OBJECT</span>
+                <strong id="sky-selected-object">
+                    NONE
+                </strong>
+            </div>
+
+            <div>
+                <span class="label">ALTITUDE</span>
+                <strong id="sky-selected-alt">
+                    --°
+                </strong>
+            </div>
+
+            <div>
+                <span class="label">AZIMUTH</span>
+                <strong id="sky-selected-az">
+                    --°
+                </strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+        <!-- ======================================
+             VISIBLE OBJECTS
+        ======================================= -->
+
+        <section class="visible-now">
+            <div class="section-title">
+                <span>VISIBLE NOW</span>
+                <span class="section-line"></span>
+            </div>
+
+            <div class="astronomy-status" id="astronomy-status">
+                CALCULATING SKY POSITION...
+            </div>
+
+            <div class="celestial-grid" id="celestial-grid">
+
+            </div>
+            
+            <!-- ======================================
+            ASTRONOMICAL EVENTS
+            ======================================= -->
+
+            <div class="events-header">
+                <span>UPCOMING EVENTS</span>
+                <span class="events-line"></span>
+            </div>
+
+
+            <!-- Prossima congiunzione -->
+
+            <div class="next-event" id="next-conjunction">
+
+                <div class="next-event-label">
+                    NEXT CONJUNCTION
+                </div>
+
+                <div class="next-event-main">
+
+                    <div class="next-event-symbol">
+                        ✦
+                    </div>
+
+                    <div>
+
+                        <div
+                            class="next-event-planets"
+                            id="next-conjunction-planets"
+                        >
+                            --
+                        </div>
+
+                        <div
+                            class="next-event-date"
+                            id="next-conjunction-date"
+                        >
+                            --
+                        </div>
+
+                    </div>
+
+                    <div class="next-event-separation">
+
+                        <span>SEPARATION</span>
+
+                        <strong
+                            id="next-conjunction-separation"
+                        >
+                            --°
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Lista congiunzioni -->
+
+            <div class="events-subtitle">
+                UPCOMING CONJUNCTIONS
+            </div>
+
+            <div
+                class="event-grid"
+                id="conjunction-grid"
+            >
+            </div>
+
+
+            <!-- Closest approaches -->
+
+            <div class="events-subtitle">
+                CLOSEST APPROACHES TO EARTH
+            </div>
+
+            <div
+                class="approach-grid"
+                id="approach-grid"
+            >
+            </div>
+            
+        </section>
+
+    </main> 
+
+    <!-- ==========================================
+         FOOTER
+    =========================================== -->
+
+    <footer>
+
+        <span>ORBIT SPACE & WEATHER STATION</span>
+
+        <span>
+            SYSTEM ONLINE
+        </span>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
