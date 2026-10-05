@@ -150,34 +150,6 @@ Git
 GitHub
 Render
 Visual Studio Code
-📁 Project Structure
-ORBIT/
-│
-├── index.html
-├── style.css
-├── script.js
-├── requirements.txt
-├── .gitignore
-│
-└── backend/
-    └── main.py
-🚀 Run Locally
-1. Clone the repository
-git clone https://github.com/Antareskrrt/ORBIT.git
-cd ORBIT
-2. Install dependencies
-python -m pip install -r requirements.txt
-3. Start the backend
-python -m uvicorn backend.main:app --reload --port 8000
-
-The API will be available at:
-
-http://127.0.0.1:8000
-4. Open the frontend
-
-For local development, the frontend can be served using VS Code Live Server.
-
-The application will automatically communicate with the local FastAPI backend.
 
 🌍 Deployment
 
@@ -191,44 +163,8 @@ The FastAPI application serves both the backend API and the frontend website.
 
 Every update can be deployed through the Git/GitHub workflow:
 
-VS Code
-   ↓
-Git
-   ↓
-GitHub
-   ↓
-Render
-   ↓
-ORBIT Online
-🔭 Future Development
+  ORBIT is an ongoing project.
 
-ORBIT is an ongoing project.
-
-Planned improvements include:
-
-📱 Dedicated mobile optimization
-📡 ISS tracking
-🌠 Meteor shower information
-🌑 Eclipses and astronomical phenomena
-⭐ Expanded sky visualization
-🌌 Constellation mapping
-💡 Light-pollution information
-🔭 Improved astrophotography-oriented tools
-⚡ Further API optimization
-📊 More detailed astronomical statistics
-🎯 Project Goals
-
-ORBIT was created as a practical project combining several areas of interest:
-
-Astronomy
-Programming
-Data visualization
-Weather information
-APIs
-Web development
-Scientific computing
-
-The goal is to evolve ORBIT from a simple astronomy dashboard into a complete personal space & observation station.
 
 👨‍💻 Author
 
