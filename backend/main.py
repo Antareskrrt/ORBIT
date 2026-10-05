@@ -10,6 +10,9 @@ import time
 from astral import Observer
 from astral.sun import sun
 
+from pathlib import Path
+from fastapi.responses import FileResponse
+
 HORIZONS_API = (
     "https://ssd.jpl.nasa.gov/api/horizons.api"
 )
@@ -41,6 +44,31 @@ app = FastAPI(
     title="ORBIT API",
     version="1.0.0"
 )
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+@app.get("/", include_in_schema=False)
+def serve_frontend():
+    return FileResponse(
+        BASE_DIR / "index.html"
+    )
+
+
+@app.get("/style.css", include_in_schema=False)
+def serve_styles():
+    return FileResponse(
+        BASE_DIR / "style.css",
+        media_type="text/css"
+    )
+
+
+@app.get("/script.js", include_in_schema=False)
+def serve_script():
+    return FileResponse(
+        BASE_DIR / "script.js",
+        media_type="application/javascript"
+    )
 
 
 # ==========================================
