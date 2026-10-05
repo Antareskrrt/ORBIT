@@ -69,38 +69,6 @@ Closest approaches to Earth
 
 The backend analyzes planetary vectors obtained from NASA/JPL Horizons and calculates angular separation and Earth-object distances.
 
-🧠 How It Works
-
-ORBIT uses a frontend/backend architecture.
-
-┌──────────────────────────────┐
-│          ORBIT UI            │
-│      HTML / CSS / JS         │
-└──────────────┬───────────────┘
-               │
-               │ HTTP requests
-               ▼
-┌──────────────────────────────┐
-│        FastAPI Backend       │
-│          Python              │
-├──────────────────────────────┤
-│ /api/astronomy               │
-│ /api/sun-times               │
-│ /api/events                  │
-└──────────────┬───────────────┘
-               │
-       ┌───────┴────────┐
-       ▼                ▼
-┌──────────────┐  ┌──────────────┐
-│ NASA / JPL   │  │  Astral      │
-│ Horizons     │  │  Solar data  │
-└──────────────┘  └──────────────┘
-
-        ┌─────────────────┐
-        │   Open-Meteo    │
-        │     Weather     │
-        └─────────────────┘
-
 The frontend communicates with the FastAPI backend through REST endpoints.
 
 The backend acts as a proxy for external astronomical services, avoiding direct browser requests to NASA/JPL Horizons and handling calculations that are better suited to the server.
