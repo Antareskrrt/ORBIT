@@ -2,7 +2,7 @@ ORBIT is a web-based astronomy and weather station designed to combine real-time
 
 The project retrieves the user's location, analyzes current weather conditions, calculates the positions of major celestial bodies and provides information about upcoming planetary events.
 
-🔗 Live website: https://orbit-space-weather.onrender.com
+🔗 Live website: https://always-love-orbit.onrender.com
 
 ✨ Features
 🌦️ Weather
