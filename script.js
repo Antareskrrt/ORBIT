@@ -209,15 +209,26 @@ function getWindDirection(degrees) {
 // LOCATION
 // ==========================================
 
-function getLocation() {
+function updateLocationDisplay(message) {
     const locationName = document.getElementById("location-name");
+    const skyViewLocation = document.getElementById("sky-view-location");
 
+    if (locationName) {
+        locationName.textContent = message;
+    }
+
+    if (skyViewLocation) {
+        skyViewLocation.textContent = message;
+    }
+}
+
+function getLocation() {
     if (!navigator.geolocation) {
-        locationName.textContent = "GEOLOCATION NOT SUPPORTED";
+        updateLocationDisplay("GEOLOCATION NOT SUPPORTED");
         return;
     }
 
-    locationName.textContent = "DETECTING LOCATION...";
+    updateLocationDisplay("DETECTING LOCATION...");
 
     navigator.geolocation.getCurrentPosition(
         position => {
@@ -236,7 +247,7 @@ function getLocation() {
         error => {
             console.error("Geolocation error:", error);
 
-            locationName.textContent = "LOCATION UNAVAILABLE";
+            updateLocationDisplay("LOCATION UNAVAILABLE");
         },
 
         {
@@ -575,8 +586,25 @@ function updateSkyQuality(
             "sky-icon"
         );
 
+    const progress =
+        document.getElementById(
+            "sky-progress"
+        );
+
 
     quality.classList.remove(
+        "sky-good",
+        "sky-medium",
+        "sky-poor"
+    );
+
+    icon.classList.remove(
+        "sky-good",
+        "sky-medium",
+        "sky-poor"
+    );
+
+    progress.classList.remove(
         "sky-good",
         "sky-medium",
         "sky-poor"
@@ -596,6 +624,9 @@ function updateSkyQuality(
             "sky-good"
         );
 
+        icon.classList.add("sky-good");
+        progress.classList.add("sky-good");
+
         icon.textContent = "✦";
     }
 
@@ -613,6 +644,9 @@ function updateSkyQuality(
             "sky-medium"
         );
 
+        icon.classList.add("sky-medium");
+        progress.classList.add("sky-medium");
+
         icon.textContent = "✧";
     }
 
@@ -629,6 +663,9 @@ function updateSkyQuality(
         quality.classList.add(
             "sky-poor"
         );
+
+        icon.classList.add("sky-poor");
+        progress.classList.add("sky-poor");
 
         icon.textContent = "☁";
     }
@@ -715,10 +752,8 @@ setInterval(
 initializeOrbit();
 
 async function reverseGeocode(latitude, longitude) {
-    const locationName = document.getElementById("location-name");
-
     try {
-        locationName.textContent = "DETECTING LOCATION...";
+        updateLocationDisplay("DETECTING LOCATION...");
 
         const url =
             `https://nominatim.openstreetmap.org/reverse` +
@@ -751,15 +786,15 @@ async function reverseGeocode(latitude, longitude) {
         const state = address.state || "";
 
         if (state) {
-            locationName.textContent = `${city}, ${state}`;
+            updateLocationDisplay(`${city}, ${state}`);
         } else {
-            locationName.textContent = city;
+            updateLocationDisplay(city);
         }
 
     } catch (error) {
         console.error("Reverse geocoding error:", error);
 
-        locationName.textContent = "LOCATION UNAVAILABLE";
+        updateLocationDisplay("LOCATION UNAVAILABLE");
     }
 }
 
@@ -2082,43 +2117,43 @@ let skyMapObjects = [];
 const SKY_OBJECT_STYLE = {
 
     SUN: {
-        color: "#ffd56a",
+        color: "#F2C57C",
         size: 9,
         symbol: "☀"
     },
 
     MOON: {
-        color: "#e8edf7",
+        color: "#DBEAFF",
         size: 8,
         symbol: "☾"
     },
 
     MERCURY: {
-        color: "#b7b7b7",
+        color: "#9AAFC5",
         size: 5,
         symbol: "☿"
     },
 
     VENUS: {
-        color: "#ffe0a3",
+        color: "#A5E7E1",
         size: 6,
         symbol: "♀"
     },
 
     MARS: {
-        color: "#ff806f",
+        color: "#E7A978",
         size: 6,
         symbol: "♂"
     },
 
     JUPITER: {
-        color: "#d7b58a",
+        color: "#8BB8F2",
         size: 7,
         symbol: "♃"
     },
 
     SATURN: {
-        color: "#d8c28c",
+        color: "#C7DCFF",
         size: 7,
         symbol: "♄"
     }
@@ -2266,17 +2301,17 @@ function drawSkyMap() {
 
     gradient.addColorStop(
         0,
-        "rgba(30, 45, 75, 0.35)"
+        "rgba(42, 72, 103, 0.55)"
     );
 
     gradient.addColorStop(
         0.65,
-        "rgba(10, 18, 32, 0.35)"
+        "rgba(12, 16, 23, 0.45)"
     );
 
     gradient.addColorStop(
         1,
-        "rgba(5, 7, 13, 0.05)"
+        "rgba(12, 16, 23, 0.05)"
     );
 
     skyMapContext.beginPath();
@@ -2308,7 +2343,7 @@ function drawSkyMap() {
     );
 
     skyMapContext.strokeStyle =
-        "rgba(122, 167, 255, 0.35)";
+        "rgba(139, 184, 242, 0.72)";
 
     skyMapContext.lineWidth = 1.5;
 
@@ -2335,7 +2370,7 @@ function drawSkyMap() {
             );
 
             skyMapContext.strokeStyle =
-                "rgba(255,255,255,0.06)";
+                "rgba(154, 175, 197, 0.24)";
 
             skyMapContext.lineWidth = 1;
 
@@ -2370,7 +2405,7 @@ function drawSkyMap() {
     );
 
     skyMapContext.strokeStyle =
-        "rgba(255,255,255,0.04)";
+        "rgba(219, 234, 255, 0.14)";
 
     skyMapContext.stroke();
 
@@ -2472,7 +2507,7 @@ function drawSkyMap() {
             /* LABEL */
 
             skyMapContext.font =
-                '8px "Space Mono"';
+                '8px "IBM Plex Mono"';
 
             skyMapContext.fillStyle =
                 style.color;
@@ -2585,3 +2620,75 @@ if (skyMap) {
     resizeSkyMap();
 
 }
+
+const dashboardTabs = Array.from(
+    document.querySelectorAll('[role="tab"][aria-controls]')
+);
+
+function activateDashboardTab(tab, moveFocus = false) {
+    const panelId = tab.getAttribute("aria-controls");
+    const panel = panelId
+        ? document.getElementById(panelId)
+        : null;
+
+    if (!panel) {
+        return;
+    }
+
+    document.body.dataset.view = tab.id.replace("-tab", "");
+
+    dashboardTabs.forEach(candidate => {
+        const selected = candidate === tab;
+        candidate.classList.toggle("active", selected);
+        candidate.setAttribute("aria-selected", String(selected));
+        candidate.tabIndex = selected ? 0 : -1;
+
+        const candidatePanelId =
+            candidate.getAttribute("aria-controls");
+        const candidatePanel = candidatePanelId
+            ? document.getElementById(candidatePanelId)
+            : null;
+
+        if (candidatePanel) {
+            candidatePanel.hidden = !selected;
+            candidatePanel.classList.toggle("active", selected);
+        }
+    });
+
+    if (moveFocus) {
+        tab.focus();
+    }
+
+    if (panelId === "sky-panel") {
+        requestAnimationFrame(() => {
+            window.dispatchEvent(new Event("resize"));
+        });
+    }
+}
+
+dashboardTabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => {
+        activateDashboardTab(tab);
+    });
+
+    tab.addEventListener("keydown", event => {
+        let nextIndex;
+
+        if (event.key === "ArrowRight") {
+            nextIndex = (index + 1) % dashboardTabs.length;
+        } else if (event.key === "ArrowLeft") {
+            nextIndex =
+                (index - 1 + dashboardTabs.length) %
+                dashboardTabs.length;
+        } else if (event.key === "Home") {
+            nextIndex = 0;
+        } else if (event.key === "End") {
+            nextIndex = dashboardTabs.length - 1;
+        } else {
+            return;
+        }
+
+        event.preventDefault();
+        activateDashboardTab(dashboardTabs[nextIndex], true);
+    });
+});
