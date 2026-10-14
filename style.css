@@ -313,7 +313,6 @@ footer {
 main {
     min-height: 480px;
     padding: 28px;
-    border: 1px solid var(--line);
     border-radius: 0 var(--radius) var(--radius) var(--radius);
     background: var(--surface);
     box-shadow: var(--shadow);
@@ -381,13 +380,13 @@ main {
     margin-right: 5px;
 }
 
-section {
+section:not(.visible-now, .events-view) {
     min-width: 0;
     margin: 0 0 18px;
     padding: 20px;
     border: 1px solid var(--line);
     border-radius: var(--radius);
-    background: var(--surface);
+
 }
 
 .section-title {
@@ -644,8 +643,6 @@ section {
     container-type: size;
     height: clamp(300px, 48vw, 480px);
     overflow: hidden;
-    border: 1px solid rgba(130, 155, 178, 0.22);
-    border-radius: 10px;
     background:
         radial-gradient(ellipse at 50% 100%, rgba(67, 84, 98, 0.16), transparent 58%),
         var(--ink-black);
@@ -677,26 +674,26 @@ section {
 }
 
 .sky-direction.north {
-    top: -10px;
+    top: calc(50% - min(47cqi, 47cqb));
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
 .sky-direction.east {
     top: 50%;
-    right: -10px;
-    transform: translate(50%, -50%);
+    left: calc(50% + min(47cqi, 47cqb));
+    transform: translate(-50%, -50%);
 }
 
 .sky-direction.south {
-    bottom: -10px;
+    top: calc(50% + min(47cqi, 47cqb));
     left: 50%;
-    transform: translate(-50%, 50%);
+    transform: translate(-50%, -50%);
 }
 
 .sky-direction.west {
     top: 50%;
-    left: -10px;
+    left: calc(50% - min(47cqi, 47cqb));
     transform: translate(-50%, -50%);
 }
 
@@ -712,12 +709,6 @@ section {
     margin-top: 18px;
 }
 
-.section-line,
-.events-line {
-    flex: 1;
-    height: 1px;
-    background: var(--line);
-}
 
 .astronomy-status {
     margin: -5px 0 12px;
